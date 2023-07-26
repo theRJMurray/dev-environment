@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cors({
 	origin: "http://localhost:3000",
 	methods: ["GET", "POST", "PUT", "DELETE"]
-  }))
+}))
 
 //connect to database
 const db = process.env.mongoURI;
@@ -24,19 +24,14 @@ mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreate
     .then(() => console.log('Connected to database'))
     .catch(error => console.log(error));
 
-///////////
 //ROUTES//
-////////////
-
 app.get('/api/auth', auth, (req,res) => {
     User.findById(req.user.id)
         .select('-password')
         .then(user => res.json(user));
 });
 
-////////////
 //REGISTER//
-////////////
 app.post('/api/register', async (req, res) => {
     try {
 		const { username, email, password, confirmPassword } = req.body;
@@ -102,9 +97,7 @@ app.post('/api/register', async (req, res) => {
 	}
   });
 
-/////////
 //LOGIN//
-/////////
 app.post('/api/login', async (req, res) => {
 	try {
 		const { username, password } = req.body;
