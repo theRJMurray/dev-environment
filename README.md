@@ -4,10 +4,10 @@ There are 2 package.json files.
 
 root
 
-npm i
-nodemon server
+`npm i`
+`nodemon server`
 
 cd client
 
-npm i
-npm start
+`npm i`
+`npm start`
